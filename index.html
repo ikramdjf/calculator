@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BMO Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- BMO Face -->
+  <div class="bmo-face">
+    <div class="bmo-eyes">
+      <div class="eye"></div>
+      <div class="eye"></div>
+    </div>
+    <div class="bmo-mouth"></div>
+  </div>
+
+  <!-- BMO Arms -->
+  <div class="bmo-arms">
+    <div class="arm left"></div>
+    <div class="arm right"></div>
+  </div>
+
+  <!-- Calculator -->
+  <div class="calculator">
+    <input type="text" class="display" id="display" readonly />
+
+    <div class="buttons">
+      <button class="ac" onclick="clearDisplay()">AC</button>
+      <button class="clear" onclick="deleteLast()">DEL</button>
+      <button onclick="append('/')">/</button>
+      <button onclick="append('*')">*</button>
+
+      <button onclick="append('7')">7</button>
+      <button onclick="append('8')">8</button>
+      <button onclick="append('9')">9</button>
+      <button onclick="append('-')">-</button>
+
+      <button onclick="append('4')">4</button>
+      <button onclick="append('5')">5</button>
+      <button onclick="append('6')">6</button>
+      <button onclick="append('+')">+</button>
+
+      <button onclick="append('1')">1</button>
+      <button onclick="append('2')">2</button>
+      <button onclick="append('3')">3</button>
+      <button onclick="append('.')">.</button>
+
+      <button onclick="append('0')">0</button>
+      <button class="equal" onclick="calculate()">=</button>
+    </div>
+  </div>
+
+  <script>
+    function append(char) {
+      document.getElementById('display').value += char;
+    }
+
+    function clearDisplay() {
+      document.getElementById('display').value = '';
+    }
+
+    function deleteLast() {
+      const display = document.getElementById('display');
+      display.value = display.value.slice(0, -1);
+    }
+
+    function calculate() {
+      try {
+        const result = eval(document.getElementById('display').value);
+        document.getElementById('display').value = result;
+      } catch {
+        document.getElementById('display').value = 'Error';
+      }
+    }
+  </script>
+
+</body>
+</html>
+
+  
+
+
+
+
